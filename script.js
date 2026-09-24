@@ -3,45 +3,10 @@ const pageProgress = document.getElementById('pageProgress');
 const startJourney = document.getElementById('startJourney');
 const cursorGlow = document.querySelector('.cursor-glow');
 const revealItems = document.querySelectorAll('.reveal');
-const careerButtons = document.querySelectorAll('.career-item');
-const careerPanel = document.getElementById('careerPanel');
 const tiltCards = document.querySelectorAll('.tilt-card');
 const menuToggle = document.getElementById('menuToggle');
 const primaryNavigation = document.getElementById('primaryNavigation');
 const navLinks = document.querySelectorAll('.nav-link[data-nav-section]');
-
-const careerContent = {
-  analyst: {
-    title: 'Data Analyst',
-    text: 'مسار تحليل البيانات مناسب لمن يحب فهم الأرقام وتحويلها إلى معنى واضح. الـ Data Analyst ينظف البيانات، يحللها، ويعرضها في dashboards وتقارير تساعد الإدارة تعرف أين المشكلة وأين الفرصة.',
-    jobs: 'فرص العمل: قوية في الشركات، البنوك، التسويق، المنتجات، والـ BI.',
-    salary: 'المرتبات: جيدة وتزيد بسرعة مع Excel / SQL / Power BI أو Tableau.'
-  },
-  engineer: {
-    title: 'Data Engineer',
-    text: 'مهندس البيانات هو الشخص الذي يبني الطريق الذي تتحرك عليه البيانات. يهتم بتجميع البيانات من أكثر من مصدر، تخزينها بشكل منظم، وتجهيزها بحيث يقدر المحلل أو عالم البيانات يستخدمها بسهولة وبدون أخطاء.',
-    jobs: 'فرص العمل: قوية جدًا في الشركات الكبيرة، الأنظمة السحابية، المنتجات الرقمية، والبنوك.',
-    salary: 'المرتبات: غالبًا أعلى من المتوسط لأنها تحتاج SQL قوي، قواعد بيانات، Cloud، وPython.'
-  },
-  scientist: {
-    title: 'Data Scientist',
-    text: 'عالم البيانات يحاول يجاوب على أسئلة أعمق: ماذا سيحدث؟ لماذا حدث؟ وما القرار الأفضل؟ يستخدم الإحصاء والبرمجة والـ Machine Learning لاكتشاف أنماط وبناء نماذج توقع تساعد الشركة تتحرك بذكاء.',
-    jobs: 'فرص العمل: ممتازة في المنتجات، البنوك، التسويق، الصحة، والـ AI teams.',
-    salary: 'المرتبات: قوية، لكنها تحتاج أساس جيد في الإحصاء، Python، تحليل البيانات، وبناء النماذج.'
-  },
-  ml: {
-    title: 'Machine Learning Engineer',
-    text: 'مهندس تعلم الآلة يأخذ نموذج الـ AI من مرحلة التجربة إلى منتج يعمل مع المستخدمين. يهتم بتدريب النماذج، اختبارها، تحسين أدائها، وربطها بتطبيق أو نظام حقيقي.',
-    jobs: 'فرص العمل: مطلوبة في شركات التقنية، البحث، التوصيات، الرؤية الحاسوبية، ومعالجة اللغة.',
-    salary: 'المرتبات: عالية عادة، لأنها تجمع بين البرمجة القوية وفهم النماذج والأنظمة.'
-  },
-  ai: {
-    title: 'AI Engineer',
-    text: 'مهندس الذكاء الاصطناعي يبني حلولًا ذكية تخدم المستخدم أو الشركة، مثل chatbots، أنظمة توصية، تصنيف محتوى، أو أدوات تساعد على اتخاذ القرار. المسار يحتاج فهم بيانات وخوارزميات وطريقة دمج الحل داخل نظام فعلي.',
-    jobs: 'فرص العمل: في نمو مستمر مع انتشار أدوات الذكاء الاصطناعي داخل الشركات والمنتجات.',
-    salary: 'المرتبات: من الأقوى في السوق عند امتلاك أساس عملي ومشاريع واضحة.'
-  }
-}
 
 const year4Courses = {
   semester1: [
@@ -122,28 +87,6 @@ function setupCursorGlow() {
   });
 }
 
-function setupCareerSwitcher() {
-  careerButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      careerButtons.forEach((item) => item.classList.remove('active'));
-      button.classList.add('active');
-
-      const key = button.dataset.career;
-      const content = careerContent[key];
-
-      careerPanel.innerHTML = `
-        <span class="section-kicker">Track Focus</span>
-        <h3>${content.title}</h3>
-        <p>${content.text}</p>
-        <div class="career-meta">
-          <span>${content.jobs}</span>
-          <span>${content.salary}</span>
-        </div>
-      `;
-    });
-  });
-}
-
 function setupTiltCards() {
   tiltCards.forEach((card) => {
     card.addEventListener('mousemove', (event) => {
@@ -220,7 +163,6 @@ window.addEventListener('DOMContentLoaded', () => {
   setupReveal();
   setupJourneyButton();
   setupCursorGlow();
-  setupCareerSwitcher();
   setupTiltCards();
   setupMobileMenu();
   setupActiveNavigation();
