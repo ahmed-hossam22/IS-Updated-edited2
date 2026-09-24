@@ -6,98 +6,46 @@
   <meta name="theme-color" content="#09111f" />
   <title>Information Systems (IS) — تجربة تفاعلية لاكتشاف القسم</title>
   <meta name="description" content="موقع Storytelling تفاعلي يشرح قسم Information Systems (IS) لطلاب الفرقة الأولى والثانية بشكل احترافي وعصري." />
+  <link rel="icon" type="image/png" href="assets/is-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="loader" class="loader">
-    <div class="loader__halo"></div>
-    <div class="loader__content">
-      <span class="loader__text">Loading...</span>
-      <div class="loader__track"><span id="loaderBar"></span></div>
-      <span id="loaderPercent" class="loader__percent">0%</span>
-    </div>
-  </div>
-
   <div class="page-noise"></div>
   <div class="cursor-glow"></div>
   <div class="ambient ambient--1"></div>
   <div class="ambient ambient--2"></div>
   <div class="ambient ambient--3"></div>
+  <header class="topbar glass" aria-label="التنقل الرئيسي">
+    <a class="brand" href="#hero" aria-label="الانتقال إلى بداية رحلة نظم المعلومات">
+      <span class="brand__logo" aria-hidden="true"><img src="assets/is-logo.png" alt=""></span>
+      <span><strong>IS Journey</strong><small>Information Systems</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="فتح قائمة التنقل" aria-controls="primaryNavigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topbar__nav" id="primaryNavigation" aria-label="روابط الأقسام">
+      <a class="nav-link active" href="#hero" data-nav-section="hero">الرئيسية</a>
+      <a class="nav-link" href="#internship" data-nav-section="internship">التدريب الصيفي</a>
+      <a class="nav-link" href="#data-careers" data-nav-section="data-careers">المسارات</a>
+      <a class="nav-link" href="#year3-roadmap" data-nav-section="year3-roadmap">سنة تالتة</a>
+      <a class="nav-link" href="#year4-roadmap" data-nav-section="year4-roadmap">سنة رابعة</a>
+      <a class="nav-link" href="#resources" data-nav-section="resources">المصادر</a>
+      <a class="nav-link" href="#contact" data-nav-section="contact">التواصل</a>
+    </nav>
+  </header>
   <main>
     <section id="hero" class="section hero">
       <div class="hero__grid"></div>
-      <div class="hero__content reveal">
-        <h1>Information Systems (IS)</h1>
-        <h2>تجربتي في سنة تالتة مع قسم IS .. يلا بينا نشوف التجربة ونشوف مجهزين ليكم ايه ؟</h2>
-        <p class="hero__lead">بوابتك إلى عالم البيانات وتحليل الأنظمة وسوق العمل</p>
-        <div class="hero__highlights" aria-label="IS highlights">
-          <span>Data</span>
-          <span>Systems</span>
-          <span>Business</span>
-          <span>AI</span>
-        </div>
+      <div class="hero__content hero__content--minimal reveal">
+        <span class="hero__logo" aria-hidden="true"><img src="assets/is-logo.png" alt=""></span>
+        <h1>Information Systems <em>(IS)</em></h1>
+        <h2>رحلتك مع قسم نظم المعلومات من الدراسة إلى المهارات وسوق العمل</h2>
         <div class="hero__actions">
-          <button id="startJourney" class="btn btn--primary btn--journey"><span>ابدأ الرحلة</span><small>واكتشف قسم IS خطوة بخطوة</small></button>
+          <a id="startJourney" class="btn btn--primary btn--journey" href="#why-is"><span>ابدأ الرحلة</span></a>
         </div>
-      </div>
-</section>
-
-    <section id="about-is" class="section">
-      <div class="section-head reveal">
-        <span class="section-kicker">نظرة على القسم</span>
-        <h2>ما هو قسم Information Systems؟</h2>
-        <p>قسم IS يربط بين التكنولوجيا والبيانات والأعمال واتخاذ القرار. ليس مجرد برمجة، وليس Business فقط، بل يجمع بين الجانبين بشكل عملي جدًا.</p>
-      </div>
-
-      <div class="bridge-layout">
-        <article class="glass pillar reveal">
-          <div class="icon-box">⌘</div>
-          <h3>Technology</h3>
-          <p>تفكير تقني، نظم، قواعد بيانات، وتطبيقات حقيقية.</p>
-        </article>
-        <article class="glass pillar reveal reveal--delay-1">
-          <div class="icon-box">◈</div>
-          <h3>Data</h3>
-          <p>فهم البيانات، التحليل، الترتيب، والاستخدام الذكي للمعلومة.</p>
-        </article>
-        <article class="glass pillar reveal reveal--delay-2">
-          <div class="icon-box">▣</div>
-          <h3>Business</h3>
-          <p>ربط الحل التقني باحتياج الشركة والقرار والإدارة.</p>
-        </article>
-        <article class="glass pillar reveal reveal--delay-3">
-          <div class="icon-box">✦</div>
-          <h3>Decision</h3>
-          <p>فهم كيف تدعم الأنظمة والبيانات اتخاذ القرار داخل المؤسسات.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="compare" class="section compare-section">
-      <div class="section-head reveal">
-        <span class="section-kicker">مقارنة التخصصات</span>
-        <h2>IS vs CS vs IT</h2>
-      </div>
-
-      <div class="compare-cards">
-        <article class="glass compare-card reveal tilt-card active-card">
-          <span class="compare-card__tag">IS</span>
-          <h3>Information Systems</h3>
-          <p>مناسب لمن يهتم بالبيانات، تحليل الأنظمة، وربط التكنولوجيا بالأعمال.</p>
-        </article>
-        <article class="glass compare-card reveal tilt-card">
-          <span class="compare-card__tag">CS</span>
-          <h3>Computer Science</h3>
-          <p>مناسب لمن يهتم بالخوارزميات، النظريات، وعلوم الحاسب العميقة.</p>
-        </article>
-        <article class="glass compare-card reveal tilt-card">
-          <span class="compare-card__tag">IT</span>
-          <h3>Information Technology</h3>
-          <p>مناسب لمن يهتم بالشبكات، البنية التحتية، الأنظمة، والدعم التقني.</p>
-        </article>
       </div>
     </section>
 
@@ -122,44 +70,27 @@
     <section class="section" id="internship">
       <div class="section-head reveal">
         <span class="section-kicker">فرصة التدريب</span>
-        <h2>التدريب الصيفي الحصري لطلبة IS</h2>
-        <p>القسم يوفر فرص تدريب صيفي بشكل حصري لطلبة قسم IS، ودي واحدة من أقوى نقاط تميز القسم لأنها بتقرّب الطالب من سوق العمل وهو لسه بيدرس.</p>
+        <h2>التدريب الصيفي لطلبة فرقة تالتة ورابعة IS</h2>
+        <p>التدريب خطوة عملية تساعد الطالب على الاقتراب من سوق العمل وفهم طبيعة العمل داخل الشركات وهو ما زال يدرس.</p>
       </div>
 
       <div class="flow-story glass reveal">
         <div class="flow-story__steps">
-          <span>Student</span>
+          <span>طالب</span>
           <i></i>
-          <span>College</span>
+          <span>الجامعة</span>
           <i></i>
-          <span>Internship</span>
+          <span>تدريب</span>
           <i></i>
-          <span>Company</span>
+          <span>شركة</span>
           <i></i>
-          <span>Real Experience</span>
+          <span>خبرة عملية</span>
         </div>
         <div class="flow-story__text">
-          <p><strong>قسم IS هو القسم الوحيد الذي يعلن ويوفر فرص التدريب الصيفي لطلبته داخل الإجازات.</strong> يعني الطالب لا يدرس مواد نظرية فقط، لكن يحصل على فرصة احتكاك حقيقي بالشركات وطريقة العمل داخل فرق تقنية وبيانات.</p>
-          <p>التدريب بيكون مرتبطًا بمجالات قريبة جدًا من مواد القسم مثل Data Analysis و Data Science و Business Intelligence و Databases، وده يساعدك تبني CV أقوى وتفهم طبيعة الشغل قبل التخرج.</p>
+          <p class="flow-story__highlight"><strong>تم بالفعل توفير فرص تدريب للطلاب في شركات داخل شبين الكوم والقاهرة، وبدأ الطلاب التدريب والاحتكاك الفعلي بسوق العمل.</strong></p>
+          <p>ده بيمنح الطالب فرصة لفهم طبيعة عمل الشركات، والتعرف على بيئة العمل والفرق التقنية، وربط الدراسة بما يراه على أرض الواقع.</p>
+          <p>التدريب يساعد كذلك على بناء خبرة عملية أوضح قبل التخرج، وفهم المجالات والمسارات التي قد تناسب الطالب مستقبلًا.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="data-oil">
-      <div class="section-head reveal">
-        <span class="section-kicker">قوة البيانات</span>
-        <h2>ليه الشركات مهتمة بالبيانات والذكاء الاصطناعي؟</h2>
-        <p>ببساطة: كل تطبيق أو شركة بتجمع بيانات عن المستخدمين والطلبات والعمليات. لما البيانات دي تتنظم وتتتحلل صح، تتحول لقرارات أفضل، توصيات أذكى، خدمة أسرع، ومنتجات أقرب لاحتياج الناس.</p>
-      </div>
-
-      <div class="brand-matrix">
-        <article class="glass brand-card reveal"><strong>Google</strong><p>نتائج البحث، الإعلانات، والتحسين المستمر.</p></article>
-        <article class="glass brand-card reveal"><strong>YouTube</strong><p>الاقتراحات، البحث، وتحليل سلوك المشاهدة.</p></article>
-        <article class="glass brand-card reveal"><strong>Amazon</strong><p>التوصيات، المنتجات، وسلوك الشراء.</p></article>
-        <article class="glass brand-card reveal"><strong>Instagram</strong><p>الترتيب، الاقتراحات، وتحليل التفاعل.</p></article>
-        <article class="glass brand-card reveal"><strong>Netflix</strong><p>اكتشاف المحتوى والتوصيات الذكية.</p></article>
-        <article class="glass brand-card reveal"><strong>Banking Systems</strong><p>العمليات، الأمان، واتخاذ القرار المالي.</p></article>
-        <article class="glass brand-card reveal"><strong>Hospital Systems</strong><p>السجلات، الإدارة، وتحسين الخدمة.</p></article>
       </div>
     </section>
 
@@ -190,36 +121,52 @@
       </div>
     </section>
 
-    <section class="section" id="is-ai">
-      <div class="section-head reveal">
-        <span class="section-kicker">IS و AI</span>
-        <h2>كيف يمهد قسم IS لطريق البيانات والذكاء الاصطناعي؟</h2>
-        <p>العلاقة ببساطة أن الذكاء الاصطناعي يبدأ من بيانات منظمة ونظام قادر يخزنها ويسترجعها ويحللها. مواد القسم مثل قواعد البيانات، استرجاع المعلومات، تحليل النظم، وData Science بتديك الأساس اللي يخليك تفهم دورة البيانات كاملة من التخزين إلى التحليل ثم بناء حلول ذكية.</p>
+    <div class="year-roadmap-banner year-roadmap-banner--three glass reveal" aria-label="Roadmap Year 3">
+      <span>ROADMAP</span>
+      <div><i aria-hidden="true"></i><strong>YEAR 3</strong><i aria-hidden="true"></i></div>
+    </div>
+
+    <section id="year3-roadmap" class="section year3-roadmap">
+      <div class="section-head year3-roadmap__head reveal">
+        <span class="section-kicker">YEAR 3 ROADMAP</span>
+        <h2>رحلة سنة تالتة</h2>
+        <p>سنة تنقلك من دراسة المفاهيم إلى فهم كيف تتحول المعرفة إلى مهارات ومسارات عملية.</p>
       </div>
 
-      <div class="ai-bridge glass reveal">
-        <div class="ai-bridge__courses">
-          <span>Database</span>
-          <span>Information Retrieval</span>
-          <span>Data Science</span>
-          <span>Business Analysis</span>
-          <span>Enterprise Systems</span>
-        </div>
-        <div class="ai-bridge__arrow">→</div>
-        <div class="ai-bridge__careers">
-          <span>Data Analysis</span>
-          <span>Data Science</span>
-          <span>Data Engineering</span>
-          <span>AI</span>
-          <span>Machine Learning</span>
-        </div>
+      <div class="year3-intro glass reveal">
+        <div class="year3-intro__mark"><span>YEAR</span><strong>3</strong></div>
+        <div class="year3-intro__copy"><strong>بداية أوضح للتخصص والاتجاه المهني</strong><p>تجمع السنة بين بناء النظم، المعمارية، البيانات، واسترجاع المعلومات.</p></div>
+        <div class="year3-intro__areas" aria-label="مجالات السنة الثالثة"><span>Systems</span><i>+</i><span>Architecture</span><i>+</i><span>Data</span><i>+</i><span>Information Retrieval</span></div>
+      </div>
+
+      <div class="roadmap reveal" aria-label="المخطط البصري لمواد السنة الثالثة">
+        <div class="roadmap__start"><span>YEAR 3</span><i aria-hidden="true"></i></div>
+
+        <article class="roadmap-phase roadmap-phase--one">
+          <div class="roadmap-phase__head"><span>SEMESTER</span><strong>01</strong><h3>Semester 1</h3><p>أساس التفكير والتحليل قبل التنفيذ.</p></div>
+          <div class="roadmap-phase__nodes">
+            <article class="glass roadmap-node"><span>01</span><h4>System Analysis 2</h4><p>تحليل وتصميم الأنظمة وفهم كيفية بناء الحلول البرمجية.</p></article>
+            <article class="glass roadmap-node"><span>02</span><h4>Enterprise Architecture</h4><p>فهم بنية المؤسسات وكيف تتكامل الأنظمة داخلها.</p></article>
+          </div>
+        </article>
+
+        <article class="roadmap-phase roadmap-phase--two">
+          <div class="roadmap-phase__head"><span>SEMESTER</span><strong>02</strong><h3>Semester 2</h3><p>بيانات وبحث ونظم أقرب إلى التطبيق.</p></div>
+          <div class="roadmap-phase__nodes roadmap-phase__nodes--three">
+            <article class="glass roadmap-node"><span>03</span><h4>Information Retrieval</h4><p>فهم البحث والفهرسة وترتيب المعلومات.</p></article>
+            <article class="glass roadmap-node"><span>04</span><h4>Database 2</h4><p>مفاهيم متقدمة في قواعد البيانات وإدارتها.</p></article>
+            <article class="glass roadmap-node"><span>05</span><h4>Data Science</h4><p>تحليل البيانات وتحويلها إلى رؤى مفيدة.</p></article>
+          </div>
+        </article>
+
+        <div class="roadmap__outcome glass"><span>Course</span><i aria-hidden="true">↓</i><span>Knowledge</span><i aria-hidden="true">↓</i><span>Skills</span><i aria-hidden="true">↓</i><strong>Future Track</strong></div>
       </div>
     </section>
 
     <section id="courses" class="section courses-section">
       <div class="section-head reveal">
         <span class="section-kicker">مواد السنة</span>
-        <h2>تجربتي مع مواد سنة تالتة جوه القسم</h2>
+        <h2>تجربتي مع مواد سنة تالتة IS</h2>
         <p>جزء من الرحلة الحقيقية داخل القسم: مواد تبني طريقة التفكير، وتفتح أبوابًا عملية جدًا.</p>
       </div>
 
@@ -230,6 +177,7 @@
         </div>
 
         <article class="glass course-card">
+          <div class="track-badge" data-track="dt"><span>TRACK</span><strong>Digital Transformation (DT)</strong></div>
           <div class="course-card__head">
             <div class="course-title"><span class="course-index">01</span><div class="course-name-box"><span>Course Name</span><h3>System Analysis 2</h3></div></div>
             <a class="btn btn--small btn--ghost" href="https://drive.google.com/drive/folders/15gH36MYeHReh6C95QMdUnuyRGOc_U1bw" target="_blank" rel="noopener noreferrer">📂 تقدر تشوف محتوى المادة</a>
@@ -261,6 +209,7 @@
         </article>
 
         <article class="glass course-card">
+          <div class="track-badge" data-track="dt"><span>TRACK</span><strong>Digital Transformation (DT)</strong></div>
           <div class="course-card__head">
             <div class="course-title"><span class="course-index">02</span><div class="course-name-box"><span>Course Name</span><h3>Enterprise Architecture</h3></div></div>
             <a class="btn btn--small btn--ghost" href="https://drive.google.com/drive/folders/1WPjj2y73dKnmRSyh51YK-h44jlpSJtNA" target="_blank" rel="noopener noreferrer">📂 تقدر تشوف محتوى المادة</a>
@@ -306,6 +255,7 @@
         </div>
 
         <article class="glass course-card">
+          <div class="track-badge" data-track="ai"><span>TRACK</span><strong>Artificial Intelligence (AI)</strong></div>
           <div class="course-card__head">
             <div class="course-title"><span class="course-index">03</span><div class="course-name-box"><span>Course Name</span><h3>Information Retrieval</h3></div></div>
             <a class="btn btn--small btn--ghost" href="https://drive.google.com/drive/folders/1OMmP5jZ5kxfGpplPKAfW8vyMys6r5LCU" target="_blank" rel="noopener noreferrer">📂 تقدر تشوف محتوى المادة</a>
@@ -343,6 +293,7 @@
         </article>
 
         <article class="glass course-card">
+          <div class="track-badge" data-track="de"><span>TRACK</span><strong>Data Engineering (DE)</strong></div>
           <div class="course-card__head">
             <div class="course-title"><span class="course-index">04</span><div class="course-name-box"><span>Course Name</span><h3>Database 2</h3></div></div>
             <a class="btn btn--small btn--ghost" href="https://drive.google.com/drive/folders/1HEaIpNPCB_NMwBH3VfXkltLt-kSbp0z5" target="_blank" rel="noopener noreferrer">📂 تقدر تشوف محتوى المادة</a>
@@ -373,6 +324,7 @@
         </article>
 
         <article class="glass course-card">
+          <div class="track-badge" data-track="ds"><span>TRACK</span><strong>Data Science (DS)</strong></div>
           <div class="course-card__head">
             <div class="course-title"><span class="course-index">05</span><div class="course-name-box"><span>Course Name</span><h3>Data Science</h3></div></div>
             <a class="btn btn--small btn--ghost" href="https://drive.google.com/drive/folders/1NJsazUSiQuBnBHjwanSW2rjeiPT9EfYl" target="_blank" rel="noopener noreferrer">📂 تقدر تشوف محتوى المادة</a>
@@ -403,6 +355,47 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <aside class="year3-reflection glass reveal" aria-label="خلاصة بعد سنة تالتة">
+      <span class="section-kicker">بعد نهاية سنة تالتة</span>
+      <h2>المواد والمشاريع بقت جزءًا من فهمك العملي</h2>
+      <p>مع كل مادة وتطبيق، بدأت الصورة تتضح: تحليل المشكلة، تنظيم البيانات، وبناء الحلول مش معلومات منفصلة، لكنها خطوات مرتبطة ببعضها.</p>
+      <div class="year3-reflection__points">
+        <span>فهم أعمق للمواد</span>
+        <span>تطبيق عملي بالمشاريع</span>
+        <span>استعداد أوضح للسنة الرابعة</span>
+      </div>
+    </aside>
+
+    <div class="year-roadmap-banner year-roadmap-banner--four glass reveal" aria-label="Roadmap Year 4">
+      <span>ROADMAP</span>
+      <div><i aria-hidden="true"></i><strong>YEAR 4</strong><i aria-hidden="true"></i></div>
+    </div>
+
+    <section id="year4-roadmap" class="section year4-roadmap">
+      <div class="section-head year4-roadmap__head reveal">
+        <span class="section-kicker">YEAR 4 ROADMAP</span>
+        <h2>رحلة سنة رابعة</h2>
+        <p>من التخصص الأكاديمي إلى بناء اتجاه مهني أوضح.</p>
+      </div>
+
+      <div class="year4-roadmap__frame glass reveal">
+        <div class="year4-roadmap__origin" aria-label="السنة الرابعة">
+          <span>YEAR</span>
+          <strong>4</strong>
+        </div>
+
+        <div id="year4Roadmap" class="year4-roadmap__semesters" aria-label="مواد السنة الرابعة"></div>
+
+        <div class="year4-roadmap__destination" aria-label="مسار الانتقال من المواد إلى التخصص">
+          <span>Courses</span>
+          <i aria-hidden="true">→</i>
+          <span>Specialization</span>
+          <i aria-hidden="true">→</i>
+          <strong>Tracks</strong>
+        </div>
       </div>
     </section>
 
@@ -484,32 +477,69 @@
       </div>
     </section>
 
-    <section class="section section--end" id="ending">
-      <div class="end-card glass reveal">
-        <span class="section-kicker">اختيارك للقسم</span>
-        <h2>IS مش مجرد قسم، ده بداية لطريق عملي في التكنولوجيا</h2>
-        <p>لو عايز تفهم البيانات، تبني أنظمة، وتدخل مجال له فرص قوية ومتنوعة، فقسم Information Systems يستحق يكون ضمن أول اختياراتك.</p>
-        <div class="end-card__points" aria-label="IS final highlights">
-          <span>Data و AI</span>
-          <span>Business Analysis</span>
-          <span>Summer Training</span>
-        </div>
-        <p class="end-card__note">ابدأ من اهتمامك الحالي، والقسم يساعدك تكتشف المسار الأنسب لك خطوة بخطوة.</p>
-        <p class="end-card__note">هتلاقي دايما مساعدة و دعم سواء من زمايلك او الدفعة الاكبر منك </p>
+    <section class="section contact-section" id="contact">
+      <div class="section-head contact-section__head reveal">
+        <span class="section-kicker">ابقَ على تواصل</span>
+        <h2>تابع أخبار قسم نظم المعلومات</h2>
+        <p>من خلال صفحة القسم الرسمية يمكنك متابعة الأخبار والأنشطة والإعلانات أولًا بأول.</p>
+      </div>
+
+      <div class="contact-section__layout">
+        <a
+          class="contact-page-preview glass reveal"
+          href="https://www.facebook.com/share/1DkaZ7K4Vn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="زيارة صفحة قسم نظم المعلومات على فيسبوك"
+        >
+          <img src="assets/department-facebook-page.jpg" alt="صورة صفحة قسم نظم المعلومات على فيسبوك" />
+          <span class="contact-page-preview__overlay">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.436H7.078v-3.49h3.047V9.414c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.49 0-1.956.931-1.956 1.887v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073Z"/>
+            </svg>
+            <strong>صفحة القسم على فيسبوك</strong>
+          </span>
+        </a>
+
+        <article class="contact-qr glass reveal">
+          <div class="contact-qr__copy">
+            <span>QR CODE</span>
+            <h3>امسح الكود وتابع الصفحة</h3>
+            <p>افتح كاميرا هاتفك أو ماسح الـQR للوصول مباشرة إلى صفحة القسم.</p>
+          </div>
+          <a
+            class="contact-qr__image"
+            href="https://www.facebook.com/share/1DkaZ7K4Vn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="فتح صفحة القسم عبر رمز QR"
+          >
+            <img src="assets/department-facebook-qr.jpg" alt="رمز QR لصفحة قسم نظم المعلومات على فيسبوك" />
+          </a>
+        </article>
       </div>
     </section>
 
-    <footer class="journey-footer">
-    <div class="journey-content">
-        <h2>Information Systems Journey</h2>
-        <p>
-            A complete guide for Information Systems students,
-            helping you navigate courses, resources, and your academic journey.
-        </p>
-        <span>Ahmed Hossam</span>
-    </div>
-</footer>
-</div>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__identity">
+          <strong>IS Journey</strong>
+          <span>قسم نظم المعلومات</span>
+        </div>
+        <a
+          class="site-footer__facebook"
+          href="https://www.facebook.com/share/1DkaZ7K4Vn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="زيارة صفحة القسم على فيسبوك"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.436H7.078v-3.49h3.047V9.414c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.49 0-1.956.931-1.956 1.887v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073Z"/>
+          </svg>
+          <span>تابعنا على فيسبوك</span>
+        </a>
+      </div>
+    </footer>
   </main>
 
   <div class="progress-bar"><span id="pageProgress"></span></div>
@@ -517,7 +547,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-

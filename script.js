@@ -1,6 +1,4 @@
 ﻿const loader = document.getElementById('loader');
-const loaderBar = document.getElementById('loaderBar');
-const loaderPercent = document.getElementById('loaderPercent');
 const pageProgress = document.getElementById('pageProgress');
 const startJourney = document.getElementById('startJourney');
 const cursorGlow = document.querySelector('.cursor-glow');
@@ -8,6 +6,9 @@ const revealItems = document.querySelectorAll('.reveal');
 const careerButtons = document.querySelectorAll('.career-item');
 const careerPanel = document.getElementById('careerPanel');
 const tiltCards = document.querySelectorAll('.tilt-card');
+const menuToggle = document.getElementById('menuToggle');
+const primaryNavigation = document.getElementById('primaryNavigation');
+const navLinks = document.querySelectorAll('.nav-link[data-nav-section]');
 
 const careerContent = {
   analyst: {
@@ -42,22 +43,47 @@ const careerContent = {
   }
 }
 
-function runLoader() {
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.random() * 10 + 5;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      setTimeout(() => {
-        loader.classList.add('hidden');
-      }, 380);
-    }
+const year4Courses = {
+  semester1: [
+    { number: '01', name: 'Modern Database', track: 'Data Engineering (DE)', trackCode: 'DE', trackKey: 'de', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '02', name: 'Enterprise Resource Planning', track: 'Digital Transformation (DT)', trackCode: 'DT', trackKey: 'dt', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '03', name: 'Data Mining', track: 'Artificial Intelligence (AI)', trackCode: 'AI', trackKey: 'ai', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '04', name: 'Business Intelligence', track: 'Data Science (DS)', trackCode: 'DS', trackKey: 'ds', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '05', name: 'Social Informatics', track: 'Digital Transformation (DT)', trackCode: 'DT', trackKey: 'dt', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } }
+  ],
+  semester2: [
+    { number: '01', name: 'Big Data', track: 'Data Science (DS)', trackCode: 'DS', trackKey: 'ds', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '02', name: 'Geographic IS (GIS)', track: 'Data Engineering (DE)', trackCode: 'DE', trackKey: 'de', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '03', name: 'Distributed Data Management', track: 'Data Engineering (DE)', trackCode: 'DE', trackKey: 'de', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '04', name: 'Intelligent IS', track: 'Artificial Intelligence (AI)', trackCode: 'AI', trackKey: 'ai', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } },
+    { number: '05', name: 'Knowledge Management', track: 'Digital Transformation (DT)', trackCode: 'DT', trackKey: 'dt', futureContent: { description: '', topics: [], skills: [], practicalApplications: [], careerAreas: [] } }
+  ]
+};
 
-    const rounded = Math.round(progress);
-    loaderBar.style.width = `${rounded}%`;
-    loaderPercent.textContent = `${rounded}%`;
-  }, 90);
+function renderYear4Roadmap() {
+  const roadmap = document.getElementById('year4Roadmap');
+  if (!roadmap) return;
+
+  roadmap.innerHTML = Object.entries(year4Courses).map(([semesterKey, courses], index) => `
+    <section class="year4-semester year4-semester--${semesterKey}">
+      <div class="year4-semester__head">
+        <span>SEMESTER</span>
+        <strong>0${index + 1}</strong>
+        <h3>Semester ${index + 1}</h3>
+      </div>
+      <div class="year4-course-grid">
+        ${courses.map((course) => `
+          <article class="year4-course glass${course.name === 'Enterprise Resource Planning' ? ' year4-course--enterprise' : ''}" data-course="${course.number}">
+            <span class="year4-course__number">${course.number}</span>
+            <h4>${course.name}</h4>
+            <span class="track-badge year4-track-badge" data-track="${course.trackKey}" aria-label="${course.track}" title="${course.track}">
+              <strong>${course.trackCode}</strong>
+            </span>
+          </article>
+        `).join('')}
+      </div>
+    </section>
+  `).join('');
 }
 
 function updatePageProgress() {
@@ -83,7 +109,7 @@ function setupReveal() {
 
 function setupJourneyButton() {
   startJourney?.addEventListener('click', () => {
-    document.getElementById('about-is')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('why-is')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
 
@@ -136,17 +162,56 @@ function setupTiltCards() {
   });
 }
 
+function setMenuState(isOpen) {
+  if (!menuToggle || !primaryNavigation) return;
+  menuToggle.classList.toggle('is-open', isOpen);
+  primaryNavigation.classList.toggle('is-open', isOpen);
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuToggle.setAttribute('aria-label', isOpen ? 'إغلاق قائمة التنقل' : 'فتح قائمة التنقل');
+}
+
+function setupMobileMenu() {
+  menuToggle?.addEventListener('click', () => {
+    setMenuState(!primaryNavigation.classList.contains('is-open'));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+}
+
+function setupActiveNavigation() {
+  const sections = [...navLinks]
+    .map((link) => document.getElementById(link.dataset.navSection))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    const visibleEntry = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (!visibleEntry) return;
+    navLinks.forEach((link) => {
+      link.classList.toggle('active', link.dataset.navSection === visibleEntry.target.id);
+    });
+  }, { rootMargin: '-25% 0px -60% 0px', threshold: [0.01, 0.25, 0.5] });
+
+  sections.forEach((section) => observer.observe(section));
+}
+
 window.addEventListener('scroll', updatePageProgress, { passive: true });
 window.addEventListener('resize', updatePageProgress);
 
 window.addEventListener('DOMContentLoaded', () => {
-  runLoader();
+  renderYear4Roadmap();
   updatePageProgress();
   setupReveal();
   setupJourneyButton();
   setupCursorGlow();
   setupCareerSwitcher();
   setupTiltCards();
+  setupMobileMenu();
+  setupActiveNavigation();
 });
 
 
