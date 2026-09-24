@@ -199,6 +199,18 @@ function setupActiveNavigation() {
   sections.forEach((section) => observer.observe(section));
 }
 
+function setupTopbarMotion() {
+  const topbar = document.querySelector('.topbar');
+  if (!topbar) return;
+
+  const updateTopbar = () => {
+    topbar.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+
+  updateTopbar();
+  window.addEventListener('scroll', updateTopbar, { passive: true });
+}
+
 window.addEventListener('scroll', updatePageProgress, { passive: true });
 window.addEventListener('resize', updatePageProgress);
 
@@ -212,6 +224,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setupTiltCards();
   setupMobileMenu();
   setupActiveNavigation();
+  setupTopbarMotion();
 });
 
 
