@@ -1784,7 +1784,7 @@ main {
 }
 
 /* Projector layout: keep each overview section readable within one desktop screen. */
-@media (min-width: 900px) and (min-height: 720px) {
+@media (min-width: 900px) {
   #why-is,
   #internship,
   #data-careers,
@@ -1875,7 +1875,7 @@ main {
 }
 
 /* Consistent desktop staging for the full page, with long course details kept scrollable. */
-@media (min-width: 900px) and (min-height: 720px) {
+@media (min-width: 900px) {
   .section:not(.hero) {
     scroll-margin-top: 5.8rem;
   }
@@ -1917,4 +1917,224 @@ main {
   .course-card {
     padding: clamp(1rem, 2vw, 1.5rem);
   }
+}
+
+/* Clearer course-to-track cards for classroom and projector viewing. */
+#data-careers .course-track-map__card {
+  border-color: rgba(182, 209, 242, 0.18);
+  background: linear-gradient(145deg, rgba(47, 75, 111, 0.78), rgba(21, 40, 70, 0.88));
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+}
+
+.course-track-map__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.35rem;
+  min-height: 1.7rem;
+  margin-bottom: 0.65rem;
+  border: 1px solid rgba(246, 198, 91, 0.34);
+  border-radius: 999px;
+  background: rgba(246, 198, 91, 0.09);
+  font-size: 0.78rem;
+}
+
+.course-track-map__card h3 {
+  font-size: clamp(1.28rem, 2.1vw, 1.65rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.course-track-group {
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.course-track-badge {
+  min-height: 2.15rem;
+  padding: 0.36rem 0.7rem;
+  border-color: color-mix(in srgb, var(--badge-color) 43%, transparent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.course-track-badge[data-kind="career"] {
+  color: #edf4ff;
+  background: rgba(214, 224, 241, 0.1);
+}
+
+@media (min-width: 900px) {
+  #data-careers .course-track-map { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+  #data-careers .course-track-map__card { min-height: 10.1rem; padding: 1.05rem; }
+  .course-track-map__card h3 { margin-bottom: 0.55rem; font-size: 1.12rem; }
+  .course-track-group { gap: 0.38rem; margin-top: 0.65rem; }
+  .course-track-badge { min-height: 1.9rem; padding: 0.28rem 0.52rem; font-size: 0.7rem; }
+}
+
+/* Comfortable middle scale: clear from a distance without oversized headings. */
+@media (min-width: 900px) {
+  .section-head h2 { font-size: clamp(2.25rem, 3.7vw, 3.25rem); }
+  .section-head p { font-size: 1.06rem; }
+
+  .hero__content--minimal h1 { font-size: clamp(3.15rem, 4.8vw, 5rem); }
+  .hero__content--minimal h2 { font-size: clamp(1.25rem, 2vw, 1.7rem); }
+
+  #why-is .adv-card { min-height: 9.35rem; padding: 1.1rem; }
+  #why-is .adv-card h3 { font-size: 1.08rem; }
+  #why-is .adv-card p { font-size: 0.92rem; line-height: 1.78; }
+
+  #internship .flow-story__steps span { font-size: 0.96rem; }
+  #internship .flow-story__text p { font-size: 0.96rem; line-height: 1.8; }
+
+  #data-careers .course-track-map__card { min-height: 10.75rem; padding: 1.2rem; }
+  .course-track-map__number { min-width: 2.6rem; min-height: 1.9rem; font-size: 0.84rem; }
+  .course-track-map__card h3 { font-size: 1.28rem; }
+  .course-track-badge { min-height: 2.05rem; padding: 0.32rem 0.6rem; font-size: 0.76rem; }
+
+  .year3-intro__copy strong { font-size: 1rem; }
+  .year3-intro__copy p { font-size: 0.9rem; }
+  .year3-intro__areas span { font-size: 0.76rem; }
+  .roadmap-phase__head h3 { font-size: 1.35rem; }
+  .roadmap-phase__head p { font-size: 0.86rem; }
+  .roadmap-node { min-height: 8.7rem; }
+  .roadmap-node h4 { font-size: 0.98rem; }
+  .roadmap-node p { font-size: 0.84rem; line-height: 1.72; }
+
+  .year4-course { height: 8.25rem; padding: 0.85rem; }
+  .year4-course h4 { font-size: 0.96rem; }
+  .year4-course--enterprise h4 { font-size: 0.84rem; }
+
+  .community-card { min-height: 8rem; padding: 1.05rem; }
+  .community-card h3 { font-size: 1.05rem; }
+  .community-card p { font-size: 0.92rem; line-height: 1.78; }
+
+  .contact-qr__copy h3 { font-size: 1.35rem; }
+  .contact-qr__copy p { font-size: 0.96rem; }
+}
+
+/* Refined market-value section: stronger hierarchy, calmer colors, clearer tracks. */
+#data-careers .section-head {
+  position: relative;
+  max-width: 900px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+#data-careers .section-head::after {
+  content: "";
+  display: block;
+  width: 4.25rem;
+  height: 2px;
+  margin: 1rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  box-shadow: 0 0 18px rgba(57, 208, 179, 0.25);
+}
+
+#data-careers .course-track-map__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 12rem;
+  border: 1px solid rgba(166, 203, 241, 0.19);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(31, 57, 89, 0.96), rgba(15, 33, 61, 0.98));
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.2);
+}
+
+#data-careers .course-track-map__card::before {
+  width: 13rem;
+  height: 13rem;
+  top: -8rem;
+  left: -5.5rem;
+  background: radial-gradient(circle, rgba(57, 208, 179, 0.16), transparent 68%);
+  filter: blur(8px);
+}
+
+#data-careers .course-track-map__card:hover {
+  border-color: rgba(102, 217, 196, 0.48);
+  background: linear-gradient(145deg, rgba(35, 70, 99, 0.98), rgba(16, 38, 68, 1));
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.28), 0 0 26px rgba(57, 208, 179, 0.08);
+}
+
+#data-careers .course-track-map__number {
+  align-self: center;
+  width: fit-content;
+  margin-bottom: 0.85rem;
+  color: #ffd66f;
+  background: rgba(246, 198, 91, 0.13);
+}
+
+#data-careers .course-track-map__card h3 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.9rem;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 2.3vw, 1.78rem);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.22);
+}
+
+#data-careers .course-track-group {
+  justify-content: center;
+  align-content: flex-start;
+  max-width: 100%;
+  gap: 0.55rem;
+  margin-top: auto;
+  padding-top: 0.15rem;
+}
+
+#data-careers .course-track-badge {
+  min-height: 2.3rem;
+  padding: 0.4rem 0.75rem;
+  border-width: 1px;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.005em;
+}
+
+#data-careers .course-track-badge[data-kind="career"] {
+  border-color: rgba(214, 224, 241, 0.28);
+  color: #eef5ff;
+  background: rgba(214, 224, 241, 0.1);
+}
+
+#data-careers .course-track-map__card.is-visible .course-track-badge {
+  animation: trackBadgeSettle 480ms cubic-bezier(.22, .8, .26, 1) both;
+}
+
+#data-careers .course-track-map__card.is-visible .course-track-badge:nth-child(2) { animation-delay: 55ms; }
+#data-careers .course-track-map__card.is-visible .course-track-badge:nth-child(3) { animation-delay: 110ms; }
+#data-careers .course-track-map__card.is-visible .course-track-badge:nth-child(4) { animation-delay: 165ms; }
+#data-careers .course-track-map__card.is-visible .course-track-badge:nth-child(5) { animation-delay: 220ms; }
+#data-careers .course-track-map__card.is-visible .course-track-badge:nth-child(6) { animation-delay: 275ms; }
+
+@keyframes trackBadgeSettle {
+  from { opacity: 0; transform: translateY(7px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (min-width: 900px) {
+  #data-careers .course-track-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  #data-careers .course-track-map__card {
+    min-height: 12.5rem;
+    padding: 1.35rem;
+  }
+
+  #data-careers .course-track-map__card:nth-child(5) {
+    grid-column: 1 / -1;
+    min-height: 10.4rem;
+  }
+
+  #data-careers .course-track-map__card h3 { font-size: 1.55rem; }
+  #data-careers .course-track-badge { font-size: 0.86rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #data-careers .course-track-map__card.is-visible .course-track-badge { animation: none; }
 }
